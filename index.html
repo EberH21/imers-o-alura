@@ -4,29 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Base de games</title>
+    <title>Games Home</title>
 </head>
 <body>
     <header>
-        <h1>Bem-vindo a Base de games</h1>
+        <h1>Bem-vindo Games Home</h1>
         <div>
-            <input type="text" placeholder="Buscar jogos...">
-            <button id="botao-busca" onclick="iniciarBusca()">Buscar</button>
+            <input id="campo-busca" type="text" placeholder="Buscar jogos...">
+           <button id="botao-busca" onclick="iniciarBusca()">Buscar</button>            
+
         </div>
     </header>
 
     <main>
-        <section>
-            <article>
-                <h2>Nome do Jogo</h2>
-                <p>
-                    <strong>Gênero:</strong> Aventura, RPG<br>
-                    <strong>Plataforma:</strong> PC, PlayStation, Xbox<br>
-                    Uma breve descrição sobre o jogo, suas mecânicas principais e o que o torna interessante para os jogadores.
-                </p>
-                <a href="#" target="_blank">Ver mais detalhes</a>
-            </article>
-        </section>
+        <div id="cards">  </div>
+        
     </main>
 
     <footer class="footer">
@@ -38,7 +30,8 @@
             <li><a href="#">Contato</a></li>
         </ul>
     </footer>
-
+    
+    <script src="script.js"></script>
 
 </body>
 </html>

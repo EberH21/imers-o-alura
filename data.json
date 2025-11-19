@@ -1,0 +1,69 @@
+[
+  {
+    "id": "rdr2",
+    "nome": "Red Dead Redemption 2",
+    "imagem": "",
+    "nota": "9.8",
+    "reviews": [
+      {
+        "site": "IGN",
+        "nota": "10/10",
+        "link": ""
+      },
+      {
+        "site": "GameSpot",
+        "nota": "9/10",
+        "link": ""
+      }
+    ]
+  },
+  {
+    "id": "gow",
+    "nome": "God of War",
+    "imagem": "",
+    "nota": "9.6",
+    "reviews": [
+      {
+        "site": "IGN",
+        "nota": "10/10",
+        "link": ""
+      }
+    ]
+  },
+  {
+    "id": "gta",
+    "nome": "Grand Theft Auto V",
+    "imagem": "",
+    "nota": "9.4",
+    "reviews": [
+      {
+        "site": "IGN",
+        "nota": "9.5/10",
+        "link": ""
+      },
+      {
+        "site": "GameSpot",
+        "nota": "9/10",
+        "link": ""
+      }
+    ]   
+    },
+    {
+    "id": "cyberpunk2077",
+    "nome": "Cyberpunk 2077",
+    "imagem": "",
+    "nota": "9.7",
+    "reviews": [
+      {
+        "site": "IGN",
+        "nota": "9/10",
+        "link": ""
+      },
+      {
+        "site": "GameSpot",
+        "nota": "8.5/10",
+        "link": ""
+      }
+    ]
+    }
+]
