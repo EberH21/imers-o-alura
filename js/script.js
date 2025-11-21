@@ -4,10 +4,31 @@ const BASE_URL = `https://api.rawg.io/api/games?key=${API_KEY}`;
 let proximaPaginaUrl = null;
 let carregando = false;
 
+const campoBusca = document.getElementById('campo-busca');
+let sugestoesContainer;
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Página inicial usa FILTRO
-    carregarJogos(`${BASE_URL}&ordering=-rating&page_size=20`, false, true);
+    iniciarPagina();
+    criarContainerDeSugestoes();
+    adicionarEventosDeBusca();
 });
+
+function iniciarPagina() {
+    const path = window.location.pathname.split("/").pop();
+    let url;
+
+    switch (path) {
+        case 'competitivos.html':
+        case 'campeonatos.html':
+            url = `${BASE_URL}&tags=competitive&ordering=-added&page_size=20`;
+            break;
+        // Adicione outros casos aqui (ex: 'multiplayer.html')
+        default: // Para index.html e outros casos
+            url = `${BASE_URL}&ordering=-added,-rating&page_size=20`;
+            break;
+    }
+    carregarJogos(url, false, true);
+}
 
 function iniciarBusca() {
     const termoBusca = document.getElementById('campo-busca').value;
@@ -21,6 +42,50 @@ function iniciarBusca() {
 
     // Busca NÃO filtra NSFW
     carregarJogos(urlBusca, false, false);
+}
+
+function criarContainerDeSugestoes() {
+    sugestoesContainer = document.createElement('div');
+    sugestoesContainer.id = 'sugestoes-busca';
+    campoBusca.parentNode.style.position = 'relative';
+    campoBusca.parentNode.appendChild(sugestoesContainer);
+}
+
+function adicionarEventosDeBusca() {
+    campoBusca.addEventListener('input', async () => {
+        const termo = campoBusca.value.trim();
+
+        if (termo.length < 3) {
+            sugestoesContainer.innerHTML = '';
+            sugestoesContainer.style.display = 'none';
+            return;
+        }
+
+        const url = `${BASE_URL}&search=${encodeURIComponent(termo)}&page_size=5`;
+        try {
+            const resposta = await fetch(url);
+            const dados = await resposta.json();
+            mostrarSugestoes(dados.results);
+        } catch (erro) {
+            console.error("Erro ao buscar sugestões:", erro);
+        }
+    });
+
+    // Esconde as sugestões se clicar fora
+    document.addEventListener('click', (e) => {
+        if (!campoBusca.contains(e.target)) {
+            sugestoesContainer.style.display = 'none';
+        }
+    });
+}
+
+function mostrarSugestoes(jogos) {
+    sugestoesContainer.innerHTML = '';
+    sugestoesContainer.style.display = 'block';
+    jogos.forEach(jogo => {
+        sugestoesContainer.innerHTML += `
+            <a href="jogo.html?id=${jogo.id}" class="sugestao-item">${jogo.name}</a>`;
+    });
 }
 
 async function carregarJogos(url, anexar = false, aplicarFiltro = true) {

@@ -8,6 +8,9 @@
 <link rel="stylesheet" href="jogo.css" />
 </head>
 
+
+
+
 <body>
 
 <header class="game-header">
@@ -21,6 +24,9 @@
     <div class="game-details">
         <h2>Descrição</h2>
         <p id="game-description"></p>
+
+        <h3>Avaliações</h3>
+        <div id="ratings-container"></div>
 
         <h3>Desenvolvedores</h3>
         <p id="game-devs"></p>
@@ -50,8 +56,16 @@
     <div id="reviews-container">Carregando reviews...</div>
 </section>
 
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox hide">
+    <span class="close" id="lightbox-close">×</span>
+    <img class="lightbox-img" id="lightbox-img">
+    <div class="arrow left" id="lightbox-prev">❮</div>
+    <div class="arrow right" id="lightbox-next">❯</div>
+    <div class="counter" id="counter"></div>
+</div>
+
 <script src="js/jogo.js"></script>
-<link rel="stylesheet" href="jogo.css">
 
 </body>
 </html>

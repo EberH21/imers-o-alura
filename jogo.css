@@ -6,6 +6,7 @@
   --muted:#9aa0a6;
   --accent:#3f72ff;
   --white:#f6f7f9;
+  --off-white-bg: #f0f2f5; /* Branco gelo para o fundo da descrição */
   --glass: rgba(255,255,255,0.03);
 }
 
@@ -63,8 +64,64 @@ body{
   min-width:0;
   background:transparent;
 }
-.game-details h2{ margin:0 0 8px 0; color:var(--white); font-size:1.05rem; }
-.game-details p{ color:var(--muted); line-height:1.5; margin:0 0 14px 0; }
+.game-details h2, .game-details h3 { 
+  margin:0 0 8px 0; 
+  color:var(--white); 
+  font-size:1.05rem; 
+  margin-top: 24px; /* Adiciona espaço acima dos títulos */
+}
+
+/* Caixa da Descrição */
+#game-description {
+  background-color: var(--off-white-bg);
+  color: #2c2c2c; /* Cor de texto escura para bom contraste */
+  padding: 14px;
+  border-radius: 8px;
+  line-height: 1.6;
+  margin: 0 0 14px 0;
+  max-height: 150px; /* Altura máxima inicial */
+  overflow: hidden;
+  position: relative;
+  transition: max-height 0.4s ease-in-out;
+}
+
+/* Efeito de fade no final do texto truncado */
+#game-description::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: linear-gradient(to top, var(--off-white-bg), transparent);
+}
+
+.game-details.desc-expanded #game-description {
+  max-height: 1000px; /* Altura grande para caber todo o texto */
+}
+
+/* Esconde o efeito de fade quando o texto está expandido */
+.game-details.desc-expanded #game-description::after {
+  display: none;
+}
+
+/* Estilos para a lista de desenvolvedores */
+#game-devs {
+  color: var(--muted);
+  line-height: 1.6;
+  max-height: 40px; /* Altura inicial para truncar */
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out;
+}
+
+.game-details.devs-expanded #game-devs {
+  max-height: 400px; /* Altura expandida */
+}
+
+/* Esconde o efeito de fade quando o texto está expandido */
+.game-details.expanded #game-description::after {
+  display: none;
+}
 
 /* platforms */
 #game-platforms{ list-style:none; display:flex; gap:8px; flex-wrap:wrap; padding:0; margin:8px 0 16px 0; }
@@ -91,6 +148,20 @@ body{
   font-size:0.9rem;
 }
 .loja-btn:hover{ transform:translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.6); color:var(--accent); }
+
+/* Botão Mostrar Mais */
+.btn-show-more {
+  background: var(--accent);
+  color: var(--white);
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: -10px;
+  margin-bottom: 15px;
+  transition: background-color 0.2s;
+}
 
 /* screenshots section / carrossel */
 .screenshots{ max-width:1200px; margin:20px auto; padding:0 16px; }
@@ -187,6 +258,41 @@ body{
   pointer-events:none;
 }
 
+/* Seção de Avaliações */
+#ratings-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.rating-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--glass);
+  padding: 10px 14px;
+  border-radius: 8px;
+}
+
+.rating-label {
+  font-weight: 600;
+  color: var(--white);
+}
+
+.rating-value {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.mc-score {
+  background-color: #ffcc33;
+  color: #000;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
 /* responsive */
 @media (max-width: 980px){
   .game-top{ flex-direction:column; align-items:center; gap:16px; }
@@ -198,4 +304,75 @@ body{
   .screenshot{ width:220px; height:140px; }
   .trailer-video{ height:220px; }
   .stars{ width:90px; font-size:14px; }
+}
+
+/* ====================== LIGHTBOX ====================== */
+/* ========== LIGHTBOX ========== */
+.lightbox {
+    display: flex; /* Alterado de 'none' para 'flex' */
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: fadeIn .2s ease;
+}
+
+.lightbox.hide {
+    display: none; /* A classe 'hide' agora controla a visibilidade */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.lightbox-img {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #000;
+    animation: zoom .3s ease;
+}
+
+@keyframes zoom {
+    from { transform: scale(.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    font-size: 60px;
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+    padding: 10px;
+    transform: translateY(-50%);
+}
+
+.arrow.left {
+    left: 40px;
+}
+
+.arrow.right {
+    right: 40px;
+}
+
+.counter {
+    position: absolute;
+    bottom: 30px;
+    color: #fff;
+    font-size: 20px;
+    letter-spacing: 2px;
 }

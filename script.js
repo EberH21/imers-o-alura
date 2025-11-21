@@ -17,8 +17,7 @@ async function carregarJogos() {
 }
 
 function mostrarJogos(lista) {
-
-  const container = document.getElementById('cards'); // 🔥 AGORA ESTÁ CERTO!
+  const container = document.getElementById('cards'); 
 
   if (!container) {
     console.error('Container #cards não encontrado no HTML.');

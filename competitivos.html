@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Jogos Competitivos</title>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo-link">
+            <img src="assets/img/baner2.png" alt="Games Home Logo" class="logo-img">
+        </a>
+        <div class="header-content">
+            <nav class="menu">
+                <ul>
+                    <li><a href="multiplayer.html">Multiplayer</a></li>
+                    <li><a href="singleplayer.html">Singleplayer</a></li>
+                    <li><a href="competitivos.html">Competitivos</a></li>
+                    <li class="dropdown">
+                        <a href="campeonatos.html" class="dropbtn">Campeonatos</a>
+                        <div class="dropdown-content">
+                            <a href="campeonatos.html?jogo=cs2">CS2</a>
+                            <a href="campeonatos.html?jogo=lol">League of Legends</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <input id="campo-busca" type="text" placeholder="Buscar jogos...">
+                <button id="botao-busca" onclick="iniciarBusca()">Buscar</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div id="cards">
+            <!-- Os cards dos jogos competitivos serão inseridos aqui pelo JavaScript -->
+        </div>
+    </main>
+
+    <footer class="footer">
+        <ul class="footer-links">
+            <li>
+                <a href="https://github.com/EberH21">GitHub</a>
+            </li>
+            <li><a href="#">Sobre</a></li>
+            <li><a href="#">Contato</a></li>
+        </ul>
+    </footer>
+    
+    <script src="js/script.js"></script>
+
+</body>
+</html>

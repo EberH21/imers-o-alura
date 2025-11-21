@@ -37,52 +37,94 @@ body {
 header {
     width: 100%;
     background: var(--secondary-color); /* #1A1A1A */
-    height: 100px; /* Altura reduzida pela metade */
-    background-repeat: no-repeat;
-    background-size: cover;  /* Cobre tudo */
-    background-position: center;
+    height: 107.2px;
     display: flex;
-    justify-content: space-between; /* Título à esquerda, busca à direita */
-    align-items: center; /* Centraliza verticalmente */
-    padding: 0 2rem; /* Adiciona espaçamento nas laterais */
-    color: var(--text-color);
+    justify-content: space-between; /* Logo na esquerda, conteúdo na direita */
+    align-items: center;
+    padding: 0 2rem; /* Adiciona um espaçamento nas bordas da tela */
 }
 
-header h1 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
+.header-content {
+    flex-grow: 1; /* Permite que este container cresça e ocupe espaço */
+    display: flex;
+    justify-content: center; /* Centraliza o menu */
+    align-items: center; /* Centraliza verticalmente */
+    gap: 2rem; /* Espaço entre a busca e o menu */
+    margin: 0 2rem; /* Adiciona margem para não colar no logo ou no menu */
+}
+
+.logo-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 86px; /* Altura do logo ajustada para o header */
+    width: auto;
 }
 
 /* =========================================================
    INPUT DE BUSCA
 ========================================================= */
-
-header div {
+.search-container {
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: .6rem;
+    position: relative; /* Para o posicionamento das sugestões */
 }
 
-div input {
-    padding: 0.6rem 1rem;
+.search-container input {
+    padding: 0.3rem 0.5rem;
     border-radius: 1rem;
-    border: 1px solid var(--tertiary-color);
+    border: 1px solid var(--primary-color); /* Borda destacada com a cor primária */
     background: var(--secondary-color);
     color: var(--text-color);
-    width: 30rem;
+    width: 17.5rem; /* Largura reduzida pela metade */
     font-size: 1.2rem;
     transition: .2s;
 }
 
-div input:focus {
+.search-container input:focus {
     outline: none;
     border-color: var(--primary-color);
     box-shadow: 0 0 8px var(--primary-color);
 }
 
+/* =========================================================
+   SUGESTÕES DE BUSCA
+========================================================= */
+#sugestoes-busca {
+    display: none; /* Começa escondido */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 30rem; /* Mesma largura do input */
+    background: var(--tertiary-color);
+    border: 1px solid #333;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    z-index: 1000;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.sugestao-item {
+    display: block;
+    padding: 12px 1rem;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+.sugestao-item:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
 #botao-busca {
-    padding: .8rem 1.5rem;
+    padding: .25rem .6rem;
     border-radius: 1rem;
     border: 1px solid var(--tertiary-color);
     background: transparent;
@@ -316,7 +358,7 @@ article a {
 .menu ul {
     list-style: none;
     display: flex;
-    gap: 1.5rem;
+    gap: 3rem; /* Aumenta o espaçamento entre os itens do menu */
 }
 
 .menu ul li a {
@@ -367,4 +409,29 @@ article a {
     display: flex;
     align-items: center;
     gap: .5rem;
+}
+
+.menu {
+    margin-top: 0; /* Remove a margem que não é mais necessária */
+    display: flex;
+    justify-content: center;
+}
+
+/* ==========================
+   BOTÃO VOLTAR
+========================== */
+.btn-voltar {
+    color: #9aa0a6; /* Cor cinza suave */
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03); /* Fundo de vidro sutil */
+    transition: all .18s ease;
+    margin-right: 1rem; /* Espaço entre o botão e o título */
+}
+
+.btn-voltar:hover {
+    transform: translateY(-2px);
+    color: #f6f7f9; /* Cor branca no hover */
+    background: rgba(255, 255, 255, 0.06);
 }
