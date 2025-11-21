@@ -14,12 +14,12 @@
    VARIÁVEIS DO TEMA
 ========================================================= */
 :root {
-    --primary-color: #c2292d;      /* Vermelho épico */
-    --secondary-color: #101014;    /* Preto-azulado */
+    --primary-color: #00FFFF;      /* Ciano Elétrico (Destaque/Acento) */
+    --secondary-color: #1A1A1A;    /* Header e Footer */
     --tertiary-color: #1b1b25;     /* Cinza escuro */
-    --bg-color: #0c0c0f;           /* Preto cinematográfico */
-    --accent-glow: #ff3b3f;        /* Vermelho neon */
-    --text-color: #ffffff;         /* Branco puro */
+    --bg-color: #121212;           /* Fundo da Página */
+    --accent-glow: #14F2FF;        /* Preço/Tag */
+    --text-color: #FFFFFF;         /* Título do Jogo (Branco) */
 }
 
 /* =========================================================
@@ -36,15 +36,15 @@ body {
 
 header {
     width: 100%;
-    height: 200px; /* Banner conforme você pediu */
+    background: var(--secondary-color); /* #1A1A1A */
+    height: 100px; /* Altura reduzida pela metade */
     background-repeat: no-repeat;
     background-size: cover;  /* Cobre tudo */
     background-position: center;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
+    justify-content: space-between; /* Título à esquerda, busca à direita */
+    align-items: center; /* Centraliza verticalmente */
+    padding: 0 2rem; /* Adiciona espaçamento nas laterais */
     color: var(--text-color);
 }
 
@@ -78,7 +78,7 @@ div input {
 div input:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 6px var(--primary-color);
+    box-shadow: 0 0 8px var(--primary-color);
 }
 
 #botao-busca {
@@ -102,9 +102,7 @@ div input:focus {
 
 main {
     max-width: 80rem;
-    margin: 2rem auto;
-    height: calc(100vh - 260px);
-    overflow-y: auto;
+    margin: 2rem auto 4rem; /* Adiciona margem inferior */
     padding: 0 1rem;
 }
 
@@ -120,7 +118,7 @@ article:hover {
 }
 
 article h2 {
-    color: var(--primary-color);
+    color: var(--text-color);
     font-size: 1.6rem;
     margin-bottom: .5rem;
 }
@@ -132,7 +130,7 @@ article p {
 }
 
 article a {
-    color: var(--primary-color);
+    color: var(--accent-glow);
 }
 
 
@@ -169,31 +167,50 @@ article a {
 
 .card a {
     display: block;
+    width: 100%;
+    height: 100%;
     text-decoration: none;
     color: var(--text-color);
 }
 
 /* ===== THUMB ===== */
 .thumb img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 200px;  /* proporcional ao tamanho menor */
+    height: 100%;
     object-fit: cover;
+    transition: transform .3s ease-in-out;
 }
 
 /* ===== BODY ===== */
 .card-body {
-    padding: 12px;
-    height: calc(450px - 200px - 90px); /* imagem + reviews */
-    overflow: hidden;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.2rem;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.8) 10%, transparent 40%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Alinha o título no topo */
 }
 
 .card-body h2 {
-    font-size: 1.05rem;
-    margin-bottom: 6px;
+    font-size: 1.2rem;
+    margin-bottom: 0;
     color: var(--text-color);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8); /* Sombra para legibilidade */
 }
 
 .card-body .meta {
+    display: none; /* Escondido por padrão, aparece no hover */
+    position: absolute;
+    bottom: 1.2rem;
+    left: 1.2rem;
     font-size: 0.75rem;
     color: #ccc;
     margin-bottom: 6px;
@@ -201,6 +218,10 @@ article a {
 }
 
 .platforms {
+    display: none; /* Escondido por padrão, aparece no hover */
+    position: absolute;
+    bottom: 2.5rem; /* Ajuste conforme necessário */
+    left: 1.2rem;
     font-size: 0.7rem;
     color: #bbb;
 }
@@ -211,103 +232,31 @@ article a {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 90px;
     background: rgba(0,0,0,0.88);
-    padding: 10px;
-    display: none;
+    padding: 1rem;
+    opacity: 0; /* Escondido por padrão */
+    transition: opacity .3s ease;
     flex-direction: column;
     justify-content: start;
+    height: auto;
 }
 
 .card:hover .reviews {
-    display: flex;
+    opacity: 1; /* Aparece no hover */
+}
+
+.card:hover .platforms {
+    display: block; /* Mostra meta e plataformas no hover */
 }
 
 .reviews a {
-    color: var(--primary-color);
-    font-size: 0.75rem;
-    margin: 3px 0;
-}
-
-.reviews a:hover {
-    text-decoration: underline;
-}
-
-/* ===== REVIEWS ===== */
-.reviews {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 110px;
-    background: rgba(0,0,0,0.88);
-    padding: 10px;
-    display: none;
-    flex-direction: column;
-    justify-content: start;
-}
-
-.card:hover .reviews {
-    display: flex;
-}
-
-.reviews a {
-    color: var(--primary-color);
+    color: var(--accent-glow);
     font-size: 0.85rem;
     margin: 3px 0;
 }
 
 .reviews a:hover {
     text-decoration: underline;
-}
-
-
-/* Área de reviews aumenta também */
-.reviews {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 140px;  /* espaço maior para combinar com o card grande */
-    background: rgba(0,0,0,0.88);
-    padding: 15px;
-    display: none;
-    flex-direction: column;
-    justify-content: start;
-}
-
-.card:hover .reviews {
-    display: flex;
-}
-
-.reviews a {
-    color: var(--primary-color);
-    font-size: 1rem;
-    margin: 4px 0;
-}
-
-/* =========================================================
-   REVIEWS DENTRO DO CARD
-========================================================= */
-
-.reviews {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0,0,0,0.88);
-    padding: 10px;
-    display: none;
-    flex-direction: column;
-}
-
-.card:hover .reviews {
-    display: flex;
-}
-
-.reviews a {
-    color: var(--primary-color);
-    font-size: .8rem;
 }
 
 /* =========================================================
@@ -345,4 +294,77 @@ article a {
     #botao-busca {
         margin-top: .5rem;
     }
+}
+/* ==========================
+   MENU HEADER
+========================== */
+.header {
+    width: 100%;
+    padding: 1rem 2rem;
+    background: var(--secondary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    cursor: pointer;
+    font-size: 2rem;
+    color: var(--text-color);
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.menu ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: .2s;
+}
+
+.menu ul li a:hover {
+    color: var(--primary-color);
+}
+
+/* DROPDOWN */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: var(--secondary-color);
+    min-width: 160px;
+    box-shadow: 0 4px 8px rgba(0,0,0,.6);
+    border-radius: 10px;
+    padding: .5rem 0;
+    z-index: 20;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: .6rem 1rem;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.dropdown-content a:hover {
+    background: var(--primary-color);
+}
+
+/* Mostrar dropdown */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* INPUT DE BUSCA NO HEADER */
+.search-area {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
 }
