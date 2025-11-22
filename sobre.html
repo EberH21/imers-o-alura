@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Sobre - Games Home</title>
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+    <header>
+        <a href="index.html" class="logo-link">
+            <img src="assets/img/baner2.png" alt="Games Home Logo" class="logo-img">
+        </a>
+        <div class="header-content">
+            <nav class="menu">
+                <ul>
+                    <li><a href="lancamentos.html">Lançamentos</a></li>
+                    <li><a href="singleplayer.html">Singleplayer</a></li>
+                    <li><a href="multiplayer.html">Multiplayer</a></li>
+                    <li><a href="competitivos.html">Competitivos</a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <input id="campo-busca" type="text" placeholder="Buscar jogos...">
+                <div id="sugestoes-busca"></div>
+                <button id="botao-busca">Buscar</button>
+            </div>
+        </div>
+    </header>
+
+    <main style="padding: 2rem; max-width: 1200px; margin: auto; flex-grow: 1;">
+        <div class="card" style="padding: 3rem; height: auto;">
+            <h1 style="font-size: 2.5rem;">Sobre o Games Home</h1>
+            <p style="color: var(--muted); font-size: 1.2rem; max-width: 80ch;">Sua base brasileira de dados de jogos — avaliações, informações e links diretos para comprar nas principais lojas digitais.</p>
+            
+            <h2 style="margin-top: 2.5rem; font-size: 1.8rem;">O que é o Games Home?</h2>
+            <p style="font-size: 1.1rem; line-height: 1.7;">O Games Home é um projeto que centraliza informações de jogos: sinopse, desenvolvedora, plataformas, screenshots, trailers, notas agregadas e onde comprar — tudo em um só lugar.</p>
+            
+            <h3 style="margin-top: 2rem; font-size: 1.5rem;">Como usamos os dados</h3>
+            <p style="font-size: 1.1rem; line-height: 1.7;">Os dados são consultados via APIs públicas (como a RAWG) e exibidos de forma organizada. Quando você clica em um botão de loja, é redirecionado para a página oficial do produto. Nós não vendemos jogos diretamente.</p>
+            
+            <h3 style="margin-top: 2rem; font-size: 1.5rem;">Privacidade & Limitações</h3>
+            <p style="font-size: 1.1rem; line-height: 1.7;">O Games Home não armazena suas informações pessoais. A funcionalidade do site depende de APIs de terceiros, que estão sujeitas a seus próprios limites de uso e disponibilidade.</p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <ul class="footer-links">
+            <li><a href="https://github.com/EberH21" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="sobre.html" target="_blank" rel="noopener noreferrer">Sobre</a></li>
+            <li><a href="Contato.html" rel="noopener noreferrer">Contato</a></li>
+        </ul>
+    </footer>
+    
+    <!-- Adiciona o script principal para que a busca funcione -->
+    <script src="script.js"></script>
+</body>
+</html>

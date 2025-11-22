@@ -4,8 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Página do Jogo</title>
-<link rel="stylesheet" href="style.css" />
-<link rel="stylesheet" href="jogo.css" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/jogo.css" />
 </head>
 
 
@@ -14,7 +14,7 @@
 <body>
 
 <header class="game-header">
-    <a href="index.html" class="btn-voltar">← Voltar</a>
+    <a href="javascript:history.back()" class="btn-voltar">← Voltar</a>
     <h1 id="game-title">Carregando...</h1>
 </header>
 
@@ -47,8 +47,8 @@
 </section>
 
 <section class="trailers">
-    <h2>Trailer Oficial</h2>
-    <div id="trailer-player">Carregando trailer...</div>
+    <h2>Videos</h2>
+    <div id="trailers-container" class="grid-screenshots">Carregando vídeos...</div>
 </section>
 
 <section class="reviews">
@@ -63,6 +63,15 @@
     <div class="arrow left" id="lightbox-prev">❮</div>
     <div class="arrow right" id="lightbox-next">❯</div>
     <div class="counter" id="counter"></div>
+</div>
+
+<!-- VIDEO LIGHTBOX -->
+<div id="video-lightbox" class="lightbox hide">
+    <span class="close" id="video-lightbox-close">×</span>
+    <video class="lightbox-video" id="lightbox-video" controls autoplay></video>
+    <div class="arrow left" id="video-lightbox-prev">❮</div>
+    <div class="arrow right" id="video-lightbox-next">❯</div>
+    <div class="counter" id="video-counter"></div>
 </div>
 
 <script src="js/jogo.js"></script>

@@ -8,7 +8,7 @@ const botaoBusca = document.getElementById('botao-busca');
 const sugestoesContainer = document.getElementById('sugestoes-busca');
 
 let nextPage = 1;
-const TAG = "singleplayer"; // Tag específica para esta página
+const TAG = "competitive"; // Tag específica para esta página
 
 // Observador para o Lazy Loading
 let lazyImageObserver;
@@ -29,6 +29,7 @@ function criarCard(jogo) {
                     <h2>${jogo.name}</h2>
                     <div class="reviews">
                         <span>⭐ ${jogo.rating}&nbsp;/&nbsp;5</span>
+                        
                     </div>
                 </div>
             </a>
@@ -77,7 +78,7 @@ async function buscarJogos(page = 1) {
         }
 
     } catch (error) {
-        console.error("Erro ao buscar jogos singleplayer:", error);
+        console.error("Erro ao buscar jogos competitivos:", error);
         cardsContainer.innerHTML = "<p>Ocorreu um erro ao carregar os jogos. Tente novamente mais tarde.</p>";
     } finally {
         // Esconde o spinner e reabilita o botão

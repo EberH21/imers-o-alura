@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/style.css">
+        <title>Contato - Games Home</title>
+    </head>
+    <body style="display: flex; flex-direction: column; min-height: 100vh;">
+        <header>
+            <a href="index.html" class="logo-link">
+                <img src="assets/img/baner2.png" alt="Games Home Logo" class="logo-img">
+            </a>
+            <div class="header-content">
+                <nav class="menu">
+                    <ul>
+                        <li><a href="lancamentos.html">Lançamentos</a></li>
+                        <li><a href="singleplayer.html">Singleplayer</a></li>
+                        <li><a href="multiplayer.html">Multiplayer</a></li>
+                        <li><a href="competitivos.html">Competitivos</a></li>
+                    </ul>
+                </nav>
+                <div class="search-container">
+                    <input id="campo-busca" type="text" placeholder="Buscar jogos...">
+                    <div id="sugestoes-busca"></div>
+                    <button id="botao-busca">Buscar</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="contact-main" style="flex-grow: 1;">
+            <div class="contact-container">
+                <h2>Entre em Contato</h2>
+                <p>Tem alguma dúvida, sugestão ou quer apenas dizer um oi? Use o formulário abaixo ou entre em contato conosco diretamente.</p>
+                
+                <div class="contact-info">
+                    <p><strong>Email:</strong> contato@gameshome.com</p>
+                    <p><strong>Telefone:</strong> (11) 98765-4321</p>
+                </div>
+
+                <form class="contact-form">
+                    <input type="text" name="name" placeholder="Seu nome" required>
+                    <input type="email" name="email" placeholder="Seu email" required>
+                    <textarea name="message" rows="7" placeholder="Sua mensagem" required></textarea>
+                    <button type="submit">Enviar Mensagem</button>
+                </form>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <ul class="footer-links">
+                <li><a href="https://github.com/EberH21" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                <li><a href="sobre.html" rel="noopener noreferrer">Sobre</a></li>
+                <li><a href="Contato.html" rel="noopener noreferrer">Contato</a></li>
+            </ul>
+        </footer>
+    </body>
+</html>

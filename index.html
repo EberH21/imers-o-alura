@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Games Home</title>
 </head>
 <body>
@@ -14,41 +14,40 @@
         <div class="header-content">
             <nav class="menu">
                 <ul>
-                    <li><a href="multiplayer.html">Multiplayer</a></li>
+                    <li><a href="lancamentos.html">Lançamentos</a></li>
                     <li><a href="singleplayer.html">Singleplayer</a></li>
+                    <li><a href="multiplayer.html">Multiplayer</a></li>
                     <li><a href="competitivos.html">Competitivos</a></li>
-                    <li class="dropdown">
-                        <a href="campeonatos.html" class="dropbtn">Campeonatos</a>
-                        <div class="dropdown-content">
-                            <a href="campeonatos.html?jogo=cs2">CS2</a>
-                            <a href="campeonatos.html?jogo=lol">League of Legends</a>
-                        </div>
-                    </li>
                 </ul>
             </nav>
             <div class="search-container">
                 <input id="campo-busca" type="text" placeholder="Buscar jogos...">
-                <button id="botao-busca" onclick="iniciarBusca()">Buscar</button>
+                <div id="sugestoes-busca"></div>
+                <button id="botao-busca">Buscar</button>
             </div>
         </div>
     </header>
 
     <main>
         <div id="cards">  </div>
+        <div id="carregamento-container" class="carregamento-container">
+            <button id="btn-carregar-mais">Carregar Mais</button>
+            <div class="spinner" style="display: none;"></div>
+        </div>
         
     </main>
 
     <footer class="footer">
         <ul class="footer-links">
             <li>
-                <a href="https://github.com/EberH21">GitHub</a>
+                <a href="https://github.com/EberH21" target="_blank" rel="noopener noreferrer">GitHub</a>
             </li>
-            <li><a href="#">Sobre</a></li>
-            <li><a href="#">Contato</a></li>
+            <li><a href="sobre.html" rel="noopener noreferrer">Sobre</a></li>
+            <li><a href="Contato.html" rel="noopener noreferrer">Contato</a></li>
         </ul>
     </footer>
     
-    <script src="js/script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>

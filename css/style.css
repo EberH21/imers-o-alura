@@ -14,12 +14,13 @@
    VARIÁVEIS DO TEMA
 ========================================================= */
 :root {
-    --primary-color: #00FFFF;      /* Ciano Elétrico (Destaque/Acento) */
-    --secondary-color: #1A1A1A;    /* Header e Footer */
-    --tertiary-color: #1b1b25;     /* Cinza escuro */
-    --bg-color: #121212;           /* Fundo da Página */
-    --accent-glow: #14F2FF;        /* Preço/Tag */
-    --text-color: #FFFFFF;         /* Título do Jogo (Branco) */
+    --bg-color: #22324A;           /* Body Principal (Azul petróleo) */
+    --secondary-color: #0D1120;    /* Background (escuro e gamer) - Header/Footer */
+    --card-bg-color: #1B2335;      /* Cor de fundo dos Cards */
+    --text-color: #F5F3F4;         /* Texto/Menu (Branco) */
+    --cta-bg-color: #F97316;       /* Botão principal (Laranja) */
+    --cta-hover-color: #EC0F5A;    /* Hover de botões (Rosa neon) */
+    --border-color: #101625;       /* Bordas ou sombras */
 }
 
 /* =========================================================
@@ -36,21 +37,22 @@ body {
 
 header {
     width: 100%;
-    background: var(--secondary-color); /* #1A1A1A */
+    background: #0b142d;
+    background: linear-gradient(to right, #0b142d 30%, #5c6d8f); /* Gradiente com mais peso na cor escura à esquerda */
     height: 107.2px;
     display: flex;
-    justify-content: space-between; /* Logo na esquerda, conteúdo na direita */
+    justify-content: flex-start; /* Alinha todos os itens à esquerda */
     align-items: center;
     padding: 0 2rem; /* Adiciona um espaçamento nas bordas da tela */
+    position: relative; /* Torna o header a referência para o menu */
 }
 
 .header-content {
     flex-grow: 1; /* Permite que este container cresça e ocupe espaço */
     display: flex;
-    justify-content: center; /* Centraliza o menu */
+    justify-content: flex-end; /* Alinha a busca à direita */
     align-items: center; /* Centraliza verticalmente */
-    gap: 2rem; /* Espaço entre a busca e o menu */
-    margin: 0 2rem; /* Adiciona margem para não colar no logo ou no menu */
+    /* position: relative; removido daqui */
 }
 
 .logo-link {
@@ -58,11 +60,21 @@ header {
     color: inherit;
     display: flex;
     align-items: center;
+    order: -1; /* Move o logo para o início do header */
+    margin-right: 2rem; /* Adiciona espaço entre o logo e o banner */
 }
 
 .logo-img {
-    height: 86px; /* Altura do logo ajustada para o header */
-    width: auto;
+    height: 105px; /* Altura do logo levemente reduzida para caber no header */
+    width: auto;   /* Largura automática para manter a proporção */
+    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+}
+
+.banner-img {
+    height: 100px; /* Altura do banner */
+    width: auto; /* Largura automática para manter a proporção */
+    object-fit: contain; /* Garante que a imagem caiba sem distorcer */
+    /* margin-right removido daqui */
 }
 
 /* =========================================================
@@ -79,8 +91,8 @@ header {
 .search-container input {
     padding: 0.3rem 0.5rem;
     border-radius: 1rem;
-    border: 1px solid var(--primary-color); /* Borda destacada com a cor primária */
-    background: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+    background: var(--bg-color);
     color: var(--text-color);
     width: 17.5rem; /* Largura reduzida pela metade */
     font-size: 1.2rem;
@@ -89,8 +101,8 @@ header {
 
 .search-container input:focus {
     outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 8px var(--primary-color);
+    border-color: var(--cta-bg-color);
+    box-shadow: 0 0 8px var(--cta-bg-color);
 }
 
 /* =========================================================
@@ -102,7 +114,7 @@ header {
     top: 100%;
     left: 0;
     width: 30rem; /* Mesma largura do input */
-    background: var(--tertiary-color);
+    background: var(--secondary-color);
     border: 1px solid #333;
     border-top: none;
     border-radius: 0 0 10px 10px;
@@ -119,23 +131,26 @@ header {
     transition: background-color 0.2s ease;
 }
 .sugestao-item:hover {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
+    background-color: var(--cta-bg-color);
+    color: var(--bg-color);
 }
 
 #botao-busca {
-    padding: .25rem .6rem;
-    border-radius: 1rem;
-    border: 1px solid var(--tertiary-color);
-    background: transparent;
-    color: var(--text-color);
+    padding: 8px 18px; /* Aumenta o padding para um visual mais robusto */
+    border-radius: 8px; /* Padroniza o arredondamento */
+    border: none;
+    background: var(--cta-bg-color); /* Botão principal (CTA) */
+    color: #0A0E1A;
+    font-weight: 600; /* Deixa o texto em negrito */
+    font-size: 1rem; /* Ajusta o tamanho da fonte */
     cursor: pointer;
-    transition: .2s;
+    transition: all .2s ease; /* Padroniza a transição */
 }
 
 #botao-busca:hover {
-    background: var(--primary-color);
-    box-shadow: 0 0 10px var(--primary-color);
+    background: var(--cta-hover-color); /* Hover Rosa Neon */
+    color: var(--text-color);
+    transform: translateY(-2px); /* Adiciona o efeito de elevação no hover */
 }
 
 /* =========================================================
@@ -143,14 +158,14 @@ header {
 ========================================================= */
 
 main {
-    max-width: 80rem;
-    margin: 2rem auto 4rem; /* Adiciona margem inferior */
-    padding: 0 1rem;
+    width: 100%;
+    margin: 2rem 0 4rem; /* Remove margem 'auto' para ocupar toda a largura */
+    padding: 0; /* Remove o padding lateral */
 }
 
 article {
     padding: 1rem 0;
-    border-bottom: 1px solid var(--tertiary-color);
+    border-bottom: 1px solid var(--border-color);
     transition: .2s;
 }
 
@@ -172,7 +187,7 @@ article p {
 }
 
 article a {
-    color: var(--accent-glow);
+    color: var(--cta-bg-color);
 }
 
 
@@ -182,29 +197,43 @@ article a {
 
 #cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: -20px;             /* espaço mínimo entre os cards */
-    padding: 20px 0;
-    justify-content: center;
+    /* Regras duplicadas removidas e valores ajustados para máxima densidade */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    padding: 20px 2rem; /* Adiciona padding lateral para não colar nas bordas */
+    justify-content: start; /* Mantém o alinhamento à esquerda */
 }
 
 
-
 .card {
-    width: 300px;
-    height: 450px;
-    background: var(--secondary-color);
+    width: 100%; /* Ocupa a largura definida pelo grid */
+    /* Regras de altura duplicadas removidas e valor final ajustado */
+    height: 300px;
+    background: var(--card-bg-color);
     border-radius: 14px;
     overflow: hidden;
-    box-shadow: 0 7px 20px rgba(0,0,0,.6);
+    box-shadow: 0 7px 20px var(--border-color);
     transition: .25s ease;
     position: relative;
     margin: auto;
+    animation: fadeIn 0.5s ease-in-out; /* Adiciona a animação de fade-in */
+}
+
+/* Animação para os cards aparecerem suavemente */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 14px 32px rgba(0,0,0,.7);
+    box-shadow: 0 14px 32px var(--border-color);
 }
 
 .card a {
@@ -292,7 +321,7 @@ article a {
 }
 
 .reviews a {
-    color: var(--accent-glow);
+    color: var(--cta-bg-color);
     font-size: 0.85rem;
     margin: 3px 0;
 }
@@ -307,11 +336,35 @@ article a {
 
 .footer {
     width: 100%;
-    background: var(--secondary-color);
-    padding: 15px 20px;
+    background: linear-gradient(to right, #0b142d 30%, #5c6d8f);
+    padding: 20px;
     color: var(--text-color);
-    border-top: 1px solid var(--tertiary-color);
+    border-top: 1px solid var(--border-color);
     font-size: .9rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    gap: 1rem; /* Espaço entre os botões */
+}
+
+.footer-links a {
+    background: var(--secondary-color); /* Cor de fundo do botão */
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: all .2s ease;
+}
+
+.footer-links a:hover {
+    background: var(--cta-bg-color); /* Padronizado para a cor de CTA */
+    color: #0A0E1A;
+    transform: translateY(-2px);
 }
 
 /* =========================================================
@@ -369,7 +422,7 @@ article a {
 }
 
 .menu ul li a:hover {
-    color: var(--primary-color);
+    color: var(--cta-bg-color); /* Hover Amarelo-Laranja */
 }
 
 /* DROPDOWN */
@@ -396,7 +449,7 @@ article a {
 }
 
 .dropdown-content a:hover {
-    background: var(--primary-color);
+    background: var(--cta-bg-color);
 }
 
 /* Mostrar dropdown */
@@ -412,26 +465,137 @@ article a {
 }
 
 .menu {
-    margin-top: 0; /* Remove a margem que não é mais necessária */
-    display: flex;
-    justify-content: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex; /* Mantém para alinhar o <ul> interno */
+    justify-content: center; /* Mantém para alinhar o <ul> interno */
 }
 
 /* ==========================
    BOTÃO VOLTAR
 ========================== */
-.btn-voltar {
-    color: #9aa0a6; /* Cor cinza suave */
+.btn-voltar { /* Padronizado como botão secundário */
+    background: var(--card-bg-color);
+    color: var(--text-color);
     text-decoration: none;
     padding: 8px 12px;
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.03); /* Fundo de vidro sutil */
+    border: 1px solid var(--border-color);
     transition: all .18s ease;
-    margin-right: 1rem; /* Espaço entre o botão e o título */
+    margin-right: 1rem;
 }
 
 .btn-voltar:hover {
     transform: translateY(-2px);
-    color: #f6f7f9; /* Cor branca no hover */
-    background: rgba(255, 255, 255, 0.06);
+    background: #F8B229; /* Hover Laranja */
+}
+
+/* ==========================
+   BOTÃO CARREGAR MAIS E SPINNER
+========================== */
+.carregamento-container {
+    padding: 2rem 0;
+    display: none; /* Começa escondido */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#btn-carregar-mais {
+    background: var(--cta-bg-color);
+    color: #0A0E1A;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+#btn-carregar-mais:hover {
+    background: var(--cta-hover-color);
+    color: var(--text-color);
+    transform: translateY(-2px);
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top-color: var(--cta-bg-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ==========================
+   PÁGINA DE CONTATO
+========================== */
+.contact-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.contact-container {
+    background-color: var(--card-bg-color);
+    padding: 2rem 3rem;
+    border-radius: 14px;
+    box-shadow: 0 7px 20px var(--border-color);
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+}
+
+.contact-container h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.contact-info {
+    margin: 1.5rem 0;
+    font-size: 1.1rem;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-input {
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--secondary-color);
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-size: 1rem;
+    width: 100%;
+}
+
+.form-button {
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all .2s ease;
+    border: none;
+    background: var(--cta-bg-color);
+    color: #0A0E1A;
+}
+
+.form-button:hover {
+    background: var(--cta-hover-color);
+    color: var(--text-color);
+    transform: translateY(-2px);
 }
